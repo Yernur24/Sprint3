@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .container{
+            background-color: rgb(216, 210, 210);
+            text-align: center;
+            display: flex;
+            border-radius: 15px;
+            align-items: center; 
+        }
+        .container div{
+            margin-right:50px
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div>
+        <label style="margin-left:35px;" for="money">Enter sum</label>
+        <input  type="number" id="money" onkeyup="millons()">
+        <select name="" id="type" onchange="millons()">
+            <option id="tenge" value="KZT">KZT</option>
+            <option id="dollar" value="USD">USD</option>
+            <option id="euro" value="EUR">EUR</option>
+        </select>
+    </div>
+    <div><b>KZT(tenge)</b>
+        <input class="input" id="kzt" type="text" disabled value="">
+    </div>
+    <div><b>USD(dollar)
+        <input class="input" id="usd" type="text" disabled value="">
+    </div>
+    <div><b>EUR(euro)
+        <input  class="input" id="eur" type="text" disabled value=" ">
+    </div>
+</div>
+
+<script type="text/javascript">
+    function millons() {
+        if (document.getElementById("money").value != null) {
+            if (document.getElementById("type").value === 'KZT') {
+                let money = document.getElementById("money").value;
+                let usd = money / 429;
+                let eur = money / 507;
+                document.getElementById("kzt").value = null;
+                document.getElementById("usd").value = usd;
+                document.getElementById("eur").value = eur;
+            }
+            if (document.getElementById("type").value === 'USD') {
+                let money = document.getElementById("money").value;
+                let kzt = money * 429;
+                let eur = money * 1.18;
+                document.getElementById("usd").value = null;
+                document.getElementById("kzt").value = kzt;
+                document.getElementById("eur").value = eur;
+            }
+            if (document.getElementById("type").value === 'EUR') {
+                let money = document.getElementById("money").value;
+                let kzt = money * 507;
+                let usd = money / 1.18;
+                document.getElementById("eur").value = null;
+                document.getElementById("kzt").value = kzt;
+                document.getElementById("usd").value = usd;
+            }
+        }
+    }
+</script>
+</body>
+</html>
